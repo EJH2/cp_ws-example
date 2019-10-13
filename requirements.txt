@@ -1,0 +1,4 @@
+django
+celery
+python-decouple
+redis
