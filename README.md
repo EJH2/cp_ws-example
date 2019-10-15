@@ -15,5 +15,4 @@ This is an example project demonstrating a [modified version](https://github.com
 
 ### Using
 * Start both the django and celery servers
-* For http example, go to /http
-* For websocket example, go to /ws
+* Go to index page to view various optional tests
