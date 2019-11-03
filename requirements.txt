@@ -2,3 +2,4 @@ django
 celery
 python-decouple
 redis
+celery-progress[websockets,redis]
