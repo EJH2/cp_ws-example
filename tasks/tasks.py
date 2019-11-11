@@ -2,7 +2,8 @@ import time
 from random import random
 
 from celery import shared_task
-from celery_progress.backend import ProgressRecorder, WebSocketProgressRecorder
+from celery_progress.backend import ProgressRecorder
+from celery_progress.websockets.backend import WebSocketProgressRecorder
 
 
 @shared_task(bind=True)

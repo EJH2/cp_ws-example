@@ -17,7 +17,7 @@ app = Celery('cp_ws', broker=redis_url, backend=redis_url, include=['tasks.tasks
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
 # Load task modules from all registered Django app configs.
-app.autodiscover_tasks(packages=['celery_progress'])
+app.autodiscover_tasks()
 
 
 @app.task(bind=True)

@@ -126,6 +126,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = 'static/'
+
 CELERY_ACCEPT_CONTENT = ['application/json']
 
 CELERY_TASK_SERIALIZER = 'json'
@@ -138,21 +140,22 @@ except ImportError:
     pass
 else:
     INSTALLED_APPS.insert(0, 'channels')
+    INSTALLED_APPS.append('celery_progress.websockets')
 
-ASGI_APPLICATION = 'cp_ws.routing.application'
+    ASGI_APPLICATION = 'cp_ws.routing.application'
 
-CHANNEL_LAYERS = {
-    'default': {
-        # This example is assuming you use redis, in which case `channels_redis` is another dependency.
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [
-                # These values should match your celery backend
-                {
-                    'address': (config('REDIS_HOST'), config('REDIS_PORT')),
-                    'db': config('REDIS_DB', cast=int)
-                }
-            ],
+    CHANNEL_LAYERS = {
+        'default': {
+            # This example is assuming you use redis, in which case `channels_redis` is another dependency.
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+            'CONFIG': {
+                "hosts": [
+                    # These values should match your celery backend
+                    {
+                        'address': (config('REDIS_HOST'), config('REDIS_PORT')),
+                        'db': config('REDIS_DB', cast=int)
+                    }
+                ],
+            },
         },
-    },
-}
+    }
