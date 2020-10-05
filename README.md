@@ -1,5 +1,7 @@
 # CP WS
 This is an example project demonstrating the capabilities of [this project](https://github.com/czue/celery-progress). 
+This project provides generic default settings to get the example up and running as quick as possible, but PLEASE DO
+NOT USE THEM IN PRODUCTION!
 
 ### Installing
 * Download source
