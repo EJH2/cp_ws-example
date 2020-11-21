@@ -1,2 +1,13 @@
 /tasks/migrations/
 db.sqlite3
+.idea/.gitignore
+.idea/cp_ws-example.iml
+.idea/discord.xml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+__pycache__/
+cp_ws/__pycache__/
+tasks/__pycache__/
+venv/
