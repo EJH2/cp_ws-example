@@ -9,19 +9,19 @@ def index(request):
 
 def http_view(request):
     result = http_task.delay(number=100)
-    return render(request, 'http.html', context={'task_id': result.task_id})
+    return render(request, 'http.html', context={'task_ids': [result.task_id]})
 
 
 def http_error_view(request):
     result = http_error_task.delay(number=100)
-    return render(request, 'http.html', context={'task_id': result.task_id})
+    return render(request, 'http.html', context={'task_ids': [result.task_id]})
 
 
 def ws_view(request):
     result = ws_task.delay(number=100)
-    return render(request, 'ws.html', context={'task_id': result.task_id})
+    return render(request, 'ws.html', context={'task_ids': [result.task_id]})
 
 
 def ws_error_view(request):
     result = ws_error_task.delay(number=100)
-    return render(request, 'ws.html', context={'task_id': result.task_id})
+    return render(request, 'ws.html', context={'task_ids': [result.task_id]})
