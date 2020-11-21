@@ -1,0 +1,22 @@
+{% for task_id in task_ids %}
+<div class='progress-wrapper-{{ forloop.counter0 }}'>
+    <div id='progress-bar-{{ forloop.counter0 }}' class='progress-bar-{{ forloop.counter0 }}' style="background-color: #68a9ef; width: 0%;">&nbsp;</div>
+    <div id="progress-bar-message-{{ forloop.counter0 }}">Waiting for progress to start...</div>
+    <div id="progress-result-{{ forloop.counter0 }}"></div>
+</div>
+{% endfor %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const task_urls = [
+            {% for task_id in task_ids %}"/ws/progress/{{ task_id }}/",
+        {% endfor %}];
+        for (var i = 0; i < task_urls.length; i++) {
+            CeleryWebSocketProgressBar.initProgressBar(task_urls[i], {
+                progressBarId: "progress-bar-" + i,
+                progressBarMessageId: "progress-bar-message-" + i,
+                resultElementId: "progress-result-" + i,
+                barColors: {'progress': '#ef4'}
+            });
+        }
+    });
+</script>
