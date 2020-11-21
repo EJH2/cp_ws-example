@@ -8,16 +8,6 @@
     <script src="{% static 'celery_progress/websockets.js' %}"></script>
 </head>
 <body>
-    <div class='progress-wrapper'>
-        <div id='progress-bar' class='progress-bar' style="background-color: #68a9ef; width: 0%;">&nbsp;</div>
-    </div>
-    <div id="progress-bar-message">Waiting for progress to start...</div>
-    <div id="celery-result"></div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var progressUrl = "/ws/progress/{{ task_id }}/";
-            CeleryWebSocketProgressBar.initProgressBar(progressUrl);
-        });
-    </script>
+{% include 'celery_progress/ws_progress.html' %}
 </body>
 </html>
